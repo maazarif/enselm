@@ -1,0 +1,16 @@
+{
+  "name": "enselm-prototype",
+  "version": "0.6.0",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/*.test.cjs",
+    "check": "node --check dist/core.js && node --check dist/app.js && node --check dist/relay.js && node --check backend/relay.mjs",
+    "build": "node scripts/build-backend.mjs",
+    "db:generate": "drizzle-kit generate",
+    "start": "node backend/local-server.mjs"
+  },
+  "devDependencies": {
+    "drizzle-kit": "0.31.10",
+    "drizzle-orm": "0.45.2"
+  }
+}

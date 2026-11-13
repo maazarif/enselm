@@ -1,0 +1,5 @@
+import {sqliteTable,text,integer,primaryKey,index} from 'drizzle-orm/sqlite-core';
+export const mailboxes=sqliteTable('relay_mailboxes',{identity:text('identity').primaryKey().notNull(),created:integer('created').notNull()});
+export const grants=sqliteTable('relay_grants',{recipient:text('recipient').notNull(),sender:text('sender').notNull()},t=>[primaryKey({columns:[t.recipient,t.sender]})]);
+export const nonces=sqliteTable('relay_nonces',{identity:text('identity').notNull(),nonce:text('nonce').notNull(),created:integer('created').notNull()},t=>[primaryKey({columns:[t.identity,t.nonce]}),index('relay_nonces_created').on(t.created)]);
+export const messages=sqliteTable('relay_messages',{sender:text('sender').notNull(),id:text('id').notNull(),recipient:text('recipient').notNull(),digest:text('digest').notNull(),envelope:text('envelope'),created:integer('created').notNull(),expires:integer('expires').notNull()},t=>[primaryKey({columns:[t.sender,t.id]}),index('relay_messages_recipient').on(t.recipient,t.expires),index('relay_messages_created').on(t.sender,t.created),index('relay_messages_expires').on(t.expires)]);

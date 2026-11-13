@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090909">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Enselm — Quietness within.</title>
+<meta name="description" content="Quietness within. A private space for notes and deliberate communication.">
+<link rel="stylesheet" href="styles.css?v=0.6.0">
+<script defer src="core.js"></script><script defer src="relay.js?v=0.6.0"></script><script defer src="app.js?v=0.6.0"></script>
+</head>
+<body class="still-mode">
+<a class="skip" href="#main">Skip to content</a>
+<div class="app-shell">
+  <div class="workspace">
+    <header class="topbar"><div class="workspace-meta"><a href="#still" class="return-still" aria-label="Return to quiet space">Enselm</a><span class="status"><span id="storage-status"></span></span></div><div class="topbar-actions"><button id="lock-button" class="quiet-button" hidden>Lock vault</button><button id="options-button" class="options-button" data-action="options" aria-haspopup="dialog" aria-controls="dialog" aria-expanded="false" aria-label="Enselm — open navigation"><span class="home-entry-name">Enselm</span><span class="task-entry-label">Options</span></button></div></header>
+    <nav class="task-navigation" aria-label="Main navigation"><a href="#space" data-nav="space">Notes</a><a href="#connections" data-nav="connections">Connections</a><a href="#controls" data-nav="controls">Controls</a><a class="quiet-link" href="#still">Return to quiet</a></nav>
+    <section id="save-notice" class="save-notice" role="status" aria-live="polite" hidden></section>
+    <main id="main" tabindex="-1"></main>
+    <footer><span>Enselm · Prototype 0.6</span><a href="#about">Privacy & limitations</a></footer>
+  </div>
+</div>
+<dialog id="dialog" aria-labelledby="dialog-title"><div id="dialog-body"></div><button id="close-dialog" class="dialog-close" aria-label="Close dialog">×</button></dialog>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<input type="file" id="file-input" accept=".json,.pfinvite,.pfmessage,.pfvault,application/json" hidden>
+<input type="file" id="photo-input" accept="image/jpeg,image/png,image/webp" hidden>
+<noscript>This app needs JavaScript for local storage and encryption. It does not send your notes to a server.</noscript>
+</body></html>
