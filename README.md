@@ -1,6 +1,6 @@
 # Enselm — Quietness within.
 
-GitHub mirror of the working 0.6 prototype. Configure GitHub Pages to deploy `main` → `/docs`. The landing page links to the separate owner-private app; Pages cannot run the relay backend. No credentials, personal vaults, or hosting project identity are included. Source snapshot: `ee647e76fd2b74c2b39299be2be88efff4786189`.
+GitHub mirror of the working 0.6 prototype. Configure GitHub Pages to deploy `main` → `/docs`. The functional Pages edition supports notes, photos, encrypted local vaults and backups, and encrypted file exchange. Online relay delivery is disabled. Data is local to each origin; moving from the old site requires exporting and restoring an encrypted backup. No credentials, personal vaults, or hosting project identity are included. Source snapshot: `ee647e76fd2b74c2b39299be2be88efff4786189`.
 
 # Enselm — working edition 0.6
 
@@ -63,3 +63,7 @@ The source download includes source, migrations, tests, setup instructions, and 
 - Temporary sessions disappear on reload. Encrypted browser storage can be cleared. Keep separate encrypted backups and their passphrases. Use one active tab per vault; cross-tab conflict detection is best effort.
 - If locking cannot save, the session remains unlocked for recovery and says so. An unlocked device, malicious extension or replaced app code can expose data.
 - Browser/iPhone acceptance testing, accessibility verification, load testing, independent security review and public-launch abuse/operations work remain incomplete.
+
+## Build GitHub Pages
+
+Run `python3 scripts/package-source.py` then `python3 scripts/build-pages.py` and commit the generated `docs/` assets. Pages serves `main` → `/docs`. No API calls are allowed by this edition’s CSP. Run `npm test` after building Pages. The relay edition remains in `dist/`.

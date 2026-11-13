@@ -1,1 +1,29 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><title>Enselm — Quietness within.</title><style>@font-face{font-family:Manrope;src:url(fonts/manrope-variable.ttf)}*{box-sizing:border-box}body{margin:0;background:#090909;color:#eee;font:16px/1.7 Manrope,Arial,sans-serif}main{max-width:800px;margin:auto;padding:12vh 28px}h1{font-size:clamp(44px,10vw,84px);font-weight:400;letter-spacing:-.05em;margin:0}h2{font-size:24px;font-weight:400}p{max-width:590px;color:#aaa}a{color:#eee;text-underline-offset:7px;padding:12px 0;display:inline-block}section{border-top:1px solid #292929;margin-top:60px;padding-top:25px}small{color:#aaa}nav{display:flex;gap:32px;flex-wrap:wrap}a:focus-visible{outline:2px solid white;outline-offset:5px}</style></head><body><main><h1>Enselm</h1><p>Quietness within.</p><section><h2>A space that asks nothing of you.</h2><p>Private notes. Deliberate communication. No feed, no automatic inbox, no demand to be present.</p><p>The default is private. The decision is yours.</p><nav><a href="https://private-first-maaz.glassybloom9.chatgpt.site">Open the prototype →</a><a href="https://github.com/maazarif/enselm">Explore the source →</a></nav><small>The hosted prototype is owner-private and may require host sign-in.</small></section><section><h2>Built around consent.</h2><p>No app account. An optional encrypted local vault. Verified contacts, reflection before sharing, explicit incoming permission, and manual message checks.</p><p>This page introduces the project. The application and encrypted delivery backend run separately; GitHub Pages does not host that backend.</p></section><section><h2>A working prototype.</h2><p>Not a production or native secure messenger. Browser/iPhone testing and independent security review remain incomplete. The repository includes setup instructions, tests, and documented limitations.</p><small>No analytics or tracking scripts on this page.</small></section></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090909">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'none'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Enselm — Quietness within.</title>
+<meta name="description" content="Quietness within. A private space for notes and deliberate communication.">
+<link rel="stylesheet" href="styles.css?v=0.6.0">
+<script defer src="core.js"></script><script defer src="app.js?v=pages-1"></script>
+</head>
+<body class="still-mode">
+<a class="skip" href="#main">Skip to content</a>
+<div class="app-shell">
+  <div class="workspace">
+    <header class="topbar"><div class="workspace-meta"><a href="#still" class="return-still" aria-label="Return to quiet space">Enselm</a><span class="status"><span id="storage-status"></span></span></div><div class="topbar-actions"><button id="lock-button" class="quiet-button" hidden>Lock vault</button><button id="options-button" class="options-button" data-action="options" aria-haspopup="dialog" aria-controls="dialog" aria-expanded="false" aria-label="Enselm — open navigation"><span class="home-entry-name">Enselm</span><span class="task-entry-label">Options</span></button></div></header>
+    <nav class="task-navigation" aria-label="Main navigation"><a href="#space" data-nav="space">Notes</a><a href="#connections" data-nav="connections">Connections</a><a href="#controls" data-nav="controls">Controls</a><a class="quiet-link" href="#still">Return to quiet</a></nav>
+    <section id="save-notice" class="save-notice" role="status" aria-live="polite" hidden></section>
+    <main id="main" tabindex="-1"></main>
+    <footer><span>Enselm · Prototype 0.6 · File exchange</span><a href="#about">Privacy & limitations</a></footer>
+  </div>
+</div>
+<dialog id="dialog" aria-labelledby="dialog-title"><div id="dialog-body"></div><button id="close-dialog" class="dialog-close" aria-label="Close dialog">×</button></dialog>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<input type="file" id="file-input" accept=".json,.pfinvite,.pfmessage,.pfvault,application/json" hidden>
+<input type="file" id="photo-input" accept="image/jpeg,image/png,image/webp" hidden>
+<noscript>This app needs JavaScript for local storage and encryption. It does not send your notes to a server.</noscript>
+</body></html>
