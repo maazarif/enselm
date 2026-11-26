@@ -27,7 +27,7 @@ a=s.index('This hosted review copy is owner-private');b=s.index('</p>',a)
 s=s[:a]+'This GitHub Pages copy is publicly accessible, but each browser has its own local space. Data is not shared between sites or devices automatically. To move your space, export an encrypted backup from the old copy and restore it here. Both people can exchange encrypted files using their own browsers.'+s[b:]
 replace('The encrypted relay now supports manual delivery checks and per-sender permissions.', 'The repository also contains a separate relay-backed edition. This Pages edition supports encrypted file exchange only.')
 (out/'app.js').write_text(s)
-for name in ('index.html','styles.css','core.js','enselm-source.zip'):
+for name in ('index.html','styles.css','core.js','maison.js','enselm-source.zip'):
  shutil.copy2(src/name,out/name)
 p=out/'index.html';html=p.read_text().replace('<script defer src="relay.js?v=0.6.0"></script>','').replace("connect-src 'self'", "connect-src 'none'").replace('app.js?v=0.6.0','app.js?v=pages-1').replace('Prototype 0.6</span>','Prototype 0.6 · File exchange</span>');p.write_text(html)
 shutil.copytree(src/'fonts',out/'fonts',dirs_exist_ok=True)
