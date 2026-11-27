@@ -225,6 +225,12 @@ input[type=checkbox]:checked::after{transform:scale(1)}
 .aside-note li{padding:6px 0}
 .aside-note a{color:var(--ink)}
 
+.card-meta{display:flex;justify-content:space-between;align-items:baseline;gap:10px 20px;flex-wrap:wrap;font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-ink)}
+.card-meta time{font-family:var(--mono);font-weight:400;letter-spacing:.1em;color:var(--ink-3)}
+.stack>.card .button{margin-top:4px}
+.request-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+.request-row h3{flex:1 1 100%;margin:0}
+.request-row p{flex:1 1 100%;margin:0 0 6px}
 /* Seal and send */
 .step-track{display:flex;gap:0;margin-bottom:34px;border-bottom:1px solid var(--line)}
 .step-track span{flex:1;padding:14px 0;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--ink-3);border-bottom:1px solid transparent;margin-bottom:-1px}
@@ -390,3 +396,8 @@ dialog h2{font-size:clamp(26px,3vw,34px);margin-bottom:16px}
   .destination-text>span{font-size:24px}
   .still-mode .options-button{letter-spacing:.38em;text-indent:.38em}
 }
+
+/* Field focus: an engraved underline rather than a box */
+input:not([type=checkbox]):focus-visible,select:focus-visible,textarea:not(.editor-body):focus-visible{outline:none;border-bottom-color:var(--accent);box-shadow:0 1px 0 0 var(--accent)}
+.actions+p,.actions+.micro{margin-top:16px}
+.welcome .card{padding-bottom:8px}

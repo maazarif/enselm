@@ -65,3 +65,13 @@ test('block does not race an in-flight incoming permission grant',async()=>{cons
  await a.emit('input',{id:'body',closest:s=>s==='#note-form'?a.nodes['#note-form']:null});a.navigate('space');
  assert.equal(state.editorDraft.body,'Local content');await a.action('retry-save');assert.ok(a.stats.writes>0);
  });
+async function reviewHTML(config={}){const state=core.freshState();state.identity={id:'self'};state.contacts=[{id:'friend',name:'Friend',verified:true,blocked:false}];state.settings.pauseSeconds=0;const {a}=await unlocked({...config,state});a.navigate('communicate');a.nodes['#draft-body']={value:'Original message'};a.nodes['#recipient']={value:'friend'};await a.emit('submit',form('compose-form'));return a.nodes['#main'].innerHTML;}
+test('review offers server delivery as a real option in the relay edition',async()=>{
+ const html=await reviewHTML();
+ assert.match(html,/<option value="relay" >Queue an encrypted message on this server<\/option>/);
+ assert.doesNotMatch(html,/<\/option value=/);
+});
+test('Pages edition review offers only encrypted file download',async()=>{
+ const html=await reviewHTML({pages:true});
+ assert.match(html,/Download an encrypted file/);assert.doesNotMatch(html,/value="relay"/);
+});

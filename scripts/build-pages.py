@@ -13,7 +13,7 @@ a=s.index('  function relayControls()'); b=s.index('\n',a)
 s=s[:a]+'''  function relayControls(){return `<div class="card"><span class="section-label">GITHUB PAGES EDITION</span><h2>Share by encrypted file</h2><p>Notes, photos, vaults, backups, and encrypted file exchange work here. Online delivery is unavailable on this host. Export an encrypted message in Connections, then deliver the file yourself.</p><p class="small-text muted">This browser has its own space. Data from another site does not appear automatically; export an encrypted backup there and restore it here. Use one active tab per vault.</p>${state.relayPending?'<p class="notice">This backup contains an unconfirmed server message. Its outcome is unknown. Return to the original app to resolve it; this copy cannot check or retry it.</p>':''}</div>`;}
 '''+s[b:]
 replace("+btn('Check messages','relay-check','secondary small')",'')
-replace('</option value="relay" ${!vault?\'disabled\':\'\'}>Queue an encrypted message on this server</option>','</option>')
+replace('</option><option value="relay" ${!vault?\'disabled\':\'\'}>Queue an encrypted message on this server</option>','</option>')
 replace('c.verified&&vault?', 'false?')
 replace('if(c.blocked&&vault&&state.identity){','if(false){')
 replace("c.blocked?'Unblock locally? This does not grant server permission.':'Block locally and try to revoke incoming server permission? Its unopened requests will be removed.'", "c.blocked?'Unblock this person locally?':'Block this person locally? Their unopened requests will be removed.'")
@@ -27,7 +27,7 @@ a=s.index('This hosted review copy is owner-private');b=s.index('</p>',a)
 s=s[:a]+'This GitHub Pages copy is publicly accessible, but each browser has its own local space. Data is not shared between sites or devices automatically. To move your space, export an encrypted backup from the old copy and restore it here. Both people can exchange encrypted files using their own browsers.'+s[b:]
 replace('The encrypted relay now supports manual delivery checks and per-sender permissions.', 'The repository also contains a separate relay-backed edition. This Pages edition supports encrypted file exchange only.')
 (out/'app.js').write_text(s)
-for name in ('index.html','styles.css','core.js','maison.js','enselm-source.zip'):
+for name in ('index.html','styles.css','core.js','maison.js','manifest.webmanifest','icon-192.png','icon-512.png','apple-touch-icon.png','enselm-source.zip'):
  shutil.copy2(src/name,out/name)
 p=out/'index.html';html=p.read_text().replace('<script defer src="relay.js?v=0.6.0"></script>','').replace("connect-src 'self'", "connect-src 'none'").replace('app.js?v=0.6.0','app.js?v=pages-1').replace('Prototype 0.6</span>','Prototype 0.6 · File exchange</span>');p.write_text(html)
 shutil.copytree(src/'fonts',out/'fonts',dirs_exist_ok=True)
