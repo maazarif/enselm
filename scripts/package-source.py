@@ -4,7 +4,7 @@ root = Path(__file__).resolve().parent.parent
 files = [root/name for name in ('README.md','package.json','package-lock.json','drizzle.config.ts')]
 for folder in ('docs','tests','scripts','backend','db','drizzle'):
     files += sorted(path for path in (root/folder).rglob('*') if path.is_file() and path.suffix in ('.md','.cjs','.mjs','.py','.sql','.ts','.json'))
-files += [root/'dist'/name for name in ('index.html','styles.css','app.js','core.js','relay.js')]
+files += [root/'dist'/name for name in ('index.html','styles.css','app.js','core.js','relay.js','maison.js','manifest.webmanifest','icon-192.png','icon-512.png','apple-touch-icon.png')]
 files += sorted(path for path in (root/'dist/fonts').rglob('*') if path.is_file())
 with ZipFile(root/'dist/enselm-source.zip', 'w', ZIP_DEFLATED) as archive:
     for path in files:
